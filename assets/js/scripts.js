@@ -53,4 +53,4 @@ const scriptURL = 'https://script.google.com/macros/s/AKfycbzLoS9JGDch29nt00HSJc
     fetch(scriptURL, { method: 'POST', body: new FormData(form)})
       .then(response => console.log('Success!', response))
       .catch(error => console.error('Error!', error.message))
-  })
+  });
