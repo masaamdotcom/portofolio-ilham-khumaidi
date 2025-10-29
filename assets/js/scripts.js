@@ -45,7 +45,7 @@ window.addEventListener('scroll', () => {
     }
   });
 });
-const scriptURL = 'https://script.google.com/macros/s/AKfycbzXbAyXtEVRwzIQUr6mcIN3CMCnwaAc009oAtdiJvtLwzqLJpW1Nj7aZtp3NHsFg-m-/exec'; // ganti dengan URL kamu
+const scriptURL = 'https://script.google.com/macros/s/AKfycbzE1eZt7slwp3vW-8kVWpWvXQkjlFuJHCw2TLs2y7PSsyvO1IGCN3TImdDm_TD3wq4SHw/exec'; // ganti dengan URL kamu
 
 function sendMessage(e) {
   e.preventDefault();
