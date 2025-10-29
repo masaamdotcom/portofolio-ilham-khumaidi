@@ -63,7 +63,7 @@ section {
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 5px;
+  gap: 15px;
 }
 
 .nav-links a {
