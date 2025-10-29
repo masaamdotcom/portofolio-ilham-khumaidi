@@ -45,12 +45,30 @@ window.addEventListener('scroll', () => {
     }
   });
 });
-const scriptURL = 'https://script.google.com/macros/s/AKfycbzLoS9JGDch29nt00HSJcQRzLd4cscShK2KnvnGOgU3XcfGEeRQcoEZNbbql4dBCNnVdg/exec'
-  const form = document.forms['submit-to-google-sheet']
 
-  form.addEventListener('submit', e => {
-    e.preventDefault()
-    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-      .then(response => console.log('Success!', response))
-      .catch(error => console.error('Error!', error.message))
-  });
+const scriptURL = 'https://script.google.com/macros/s/AKfycbzLoS9JGDch29nt00HSJcQRzLd4cscShK2KnvnGOgU3XcfGEeRQcoEZNbbql4dBCNnVdg/exec'
+const form = document.forms['submit-to-google-sheet']
+const msg = document.getElementById('msg') // elemen buat feedback
+
+form.addEventListener('submit', e => {
+  e.preventDefault()
+
+  msg.innerHTML = '⏳ Mengirim data...'
+  msg.style.color = '#007bff'
+
+  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+    .then(response => {
+      if (response.ok) {
+        msg.innerHTML = '✅ Pesan berhasil dikirim! Terima kasih 🙏'
+        msg.style.color = '#28a745'
+        form.reset()
+      } else {
+        throw new Error('Gagal mengirim data.')
+      }
+    })
+    .catch(error => {
+      msg.innerHTML = '❌ Terjadi kesalahan, coba lagi.'
+      msg.style.color = '#dc3545'
+      console.error('Error!', error.message)
+    })
+})
