@@ -45,7 +45,7 @@ window.addEventListener('scroll', () => {
     }
   });
 });
-const scriptURL = 'https://script.google.com/macros/s/AKfycbzE1eZt7slwp3vW-8kVWpWvXQkjlFuJHCw2TLs2y7PSsyvO1IGCN3TImdDm_TD3wq4SHw/exec'
+const scriptURL = 'https://script.google.com/macros/s/AKfycbzLoS9JGDch29nt00HSJcQRzLd4cscShK2KnvnGOgU3XcfGEeRQcoEZNbbql4dBCNnVdg/exec'
   const form = document.forms['submit-to-google-sheet']
 
   form.addEventListener('submit', e => {
