@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <!-- Metadata untuk SEO dan Responsif -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Portofolio pribadi saya — menampilkan karya, keterampilan, dan pengalaman.">
+  <meta name="keywords" content="portofolio, web developer, desain, project, HTML, CSS, JavaScript">
+  <meta name="author" content="Ilham Khumaidi">
+  <!-- Judul Halaman -->
+  <title>Portofolio | Nama Kamu</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+  <link rel="shortcut icon" href="favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="favicon/site.webmanifest" />
+  <!-- Stylesheet CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+  <!-- ===== Navbar ===== -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">ILHAM<span> KHUMAIDI</span></div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#beranda">Beranda</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Project</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="burger" id="burger">&#9776;</button>
+    </nav>
+  </header>
+
+  <!-- ===== Hero Section ===== -->
+  <section class="hero" id="beranda" name="beranda">
+    <div class="hero-content">
+      <img src="assets/img/ilham-khumaidi.webp" alt="Foto Profil" class="profile-img">
+      <h1>Halo, Saya <span>Ilham Khumaidi</span></h1>
+      <p>Seorang <b>Web Developer</b> yang fokus pada desain bersih, performa cepat, dan pengalaman pengguna yang
+        menyenangkan.</p>
+      <button><a href="#contact"></a>Hubungi Saya</button>
+    </div>
+  </section>
+  <!-- ===== ABOUT SECTION ===== -->
+  <section class="about" id="about">
+    <div class="about-container">
+      <div class="about-img">
+        <img src="assets/img/ilham-khumaidi.webp" alt="Foto Ilham Khumaidi" />
+      </div>
+      <div class="about-text">
+        <h2>Tentang Saya</h2>
+        <p>
+          Halo! Saya <strong>Ilham Khumaidi</strong>, seorang pengembang web yang
+          fokus menciptakan website undangan digital modern dan responsif.
+          Saya senang mengeksplorasi desain interaktif, animasi halus, dan
+          teknologi baru agar setiap proyek terasa hidup dan unik.
+        </p>
+        <p>
+          Saat ini saya sedang membangun platform undangan online modular yang
+          mudah dikelola bahkan oleh pengguna non-teknis.
+        </p>
+        <button id="btnHire">Hubungi Saya</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects" id="projects" name="projects">
+    <h2>Proyek Saya</h2>
+    <div class="project-list">
+      <div class="project-card">
+        <img src="assets/img/ilhamkhumaidi.webp" alt="Proyek 1">
+        <h3>Website Undangan 1</h3>
+        <p>Website undangan online sederhana dengan tampilan modern dan responsive.</p>
+      </div>
+
+      <div class="project-card">
+        <img src="assets/img/ilhamkhumaidi.webp" alt="Proyek 2">
+        <h3>Website Undangan 2</h3>
+        <p>Website undangan online sederhana dengan tampilan modern dan responsive.</p>
+      </div>
+
+      <div class="project-card">
+        <img src="assets/img/ilhamkhumaidi.webp" alt="Proyek 3">
+        <h3>Website Undangan 3</h3>
+        <p>Website undangan online sederhana dengan tampilan modern dan responsive.</p>
+      </div>
+    </div>
+  </section>
+  <section class="contact" id="contact">
+    <h2>Hubungi Saya</h2>
+    <p>Jika kamu tertarik bekerja sama atau punya pertanyaan, silakan kirim pesan melalui form di bawah ini.</p>
+
+    <div class="contact-container">
+      <!-- Form -->
+      <form class="contact-form" onsubmit="sendMessage(event)">
+        <div class="form-group">
+          <label for="name">Nama</label>
+          <input type="text" id="name" name="name" placeholder="Masukkan nama kamu" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Masukkan email kamu" required>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Pesan</label>
+          <textarea id="message" name="message" placeholder="Tulis pesan kamu..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn-kirim">Kirim Pesan</button>
+      </form>
+
+      <!-- Info Kontak -->
+      <div class="contact-info">
+        <h3>Informasi Kontak</h3>
+        <p><strong>Email:</strong> ilham@example.com</p>
+        <p><strong>WhatsApp:</strong> <a href="https://wa.me/6281234567890" target="_blank">+62 812-3456-7890</a></p>
+        <div class="social-icons">
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <p>&copy; 2025 Nama Kamu. Dibuat dengan ❤️ dan HTML, CSS, JS.</p>
+  </footer>
+
+  <script src="assets/js/scripts.js"></script>
+</body>
+
+</html>
