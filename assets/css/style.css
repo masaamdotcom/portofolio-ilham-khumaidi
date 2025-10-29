@@ -346,6 +346,12 @@ button:hover {
   color: #38bdf8;
 }
 
+#msg {
+  font-size: 0.95rem;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+}
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
   .contact-container {
