@@ -45,33 +45,12 @@ window.addEventListener('scroll', () => {
     }
   });
 });
-const scriptURL = 'https://script.google.com/macros/s/AKfycbzE1eZt7slwp3vW-8kVWpWvXQkjlFuJHCw2TLs2y7PSsyvO1IGCN3TImdDm_TD3wq4SHw/exec'; // ganti dengan URL kamu
+const scriptURL = 'https://script.google.com/macros/s/AKfycbzE1eZt7slwp3vW-8kVWpWvXQkjlFuJHCw2TLs2y7PSsyvO1IGCN3TImdDm_TD3wq4SHw/exec'
+  const form = document.forms['submit-to-google-sheet']
 
-function sendMessage(e) {
-  e.preventDefault();
-
-  const form = e.target;
-  const data = {
-    name: form.name.value,
-    email: form.email.value,
-    message: form.message.value,
-  };
-
-  fetch(scriptURL, {
-    method: 'POST',
-    body: JSON.stringify(data),
-    headers: {
-      'Content-Type': 'application/json',
-    },
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
   })
-    .then((res) => res.json())
-    .then(() => {
-      alert('Pesan kamu sudah terkirim ke Google Sheet! ✅');
-      form.reset();
-    })
-    .catch((err) => {
-      console.error('Error:', err);
-      alert('Gagal mengirim pesan ❌');
-    });
-}
-
