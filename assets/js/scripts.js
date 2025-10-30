@@ -72,3 +72,5 @@ form.addEventListener('submit', e => {
       console.error('Error!', error.message)
     })
 })
+
+document.getElementById("current-year").textContent = new Date().getFullYear();

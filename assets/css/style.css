@@ -132,7 +132,7 @@ nav a.active {
 }
 
 button {
-  background: var(--warna-orange);
+  background: var(--warna-hijau);
   color: white;
   margin-top: 10px;
   padding: 10px 20px;
@@ -141,8 +141,13 @@ button {
   cursor: pointer;
 }
 
+button a {
+  color: white;
+  text-decoration: none;
+}
+
 button:hover {
-  background: var(--warna-hijau);
+  background: var(--warna-orange);
 }
 
 /* =========================================
@@ -155,6 +160,11 @@ button:hover {
   justify-content: center;
   align-items: center;
   text-align: left;
+  min-height: 100vh;
+  flex-direction: column;
+  /* Atur orientasi tata letak menjadi kolom */
+  margin: 0;
+  /* Hapus margin default */
 }
 
 .about-container {
@@ -170,8 +180,8 @@ button:hover {
   width: 280px;
   height: 280px;
   object-fit: cover;
-  border-radius: 50%;
-  border: 4px solid var(--warna-hijau);
+  border-radius: 15%;
+  border: 4px solid wheat;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 }
@@ -274,6 +284,12 @@ button:hover {
   color: wheat;
 }
 
+.contact a {
+  color: var(--warna-orange);
+  text-decoration: none;
+  text-align: center;
+}
+
 .contact-container {
   display: flex;
   flex-wrap: wrap;
@@ -289,6 +305,12 @@ button:hover {
   width: 320px;
   text-align: left;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.contact-info h3 {
+  margin-bottom: 15px;
+  color: wheat;
+  text-align: center;
 }
 
 .contact-form .form-group {
@@ -332,6 +354,24 @@ button:hover {
   background: var(--warna-hijau);
 }
 
+/* Social Media Icons */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.social-icons a svg {
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.social-icons a:hover svg {
+  color: #f4a261;
+  transform: scale(1.2);
+}
+
 #msg {
   font-size: 0.95rem;
   margin-top: 10px;
@@ -347,6 +387,25 @@ footer {
   text-align: center;
   padding: 15px;
   font-size: 0.9rem;
+}
+
+footer a {
+  color: var(--warna-orange);
+  text-decoration: none;
+}
+
+section,
+h2,
+p,
+a {
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE 10+ */
+  user-select: none;
+  /* Standard */
 }
 
 /* =========================================
