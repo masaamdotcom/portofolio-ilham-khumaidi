@@ -74,6 +74,7 @@ form.addEventListener('submit', e => {
 })
 
 document.getElementById("current-year").textContent = new Date().getFullYear();
+
 const canvas = document.getElementById("ecg-bg");
 const ctx = canvas.getContext("2d");
 
@@ -87,9 +88,9 @@ resize();
 let points = [];
 let x = 0;
 const baseY = canvas.height / 2;
-const speed = 3;
+const speed = 4;
 
-// Inisialisasi titik
+// Siapkan buffer awal
 function resetPoints() {
   points = [];
   for (let i = 0; i < canvas.width; i++) {
@@ -98,32 +99,36 @@ function resetPoints() {
 }
 resetPoints();
 
-// Variabel untuk efek scanner
+// Variabel scanner cahaya
 let scanX = 0;
 
+// Timer detak
+let heartbeatTimer = 0;
+
 function draw() {
-  // Latar belakang sedikit transparan agar efek trail muncul
   ctx.fillStyle = "rgba(0, 0, 0, 0.25)";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  // ECG line
+  // ECG Line
   ctx.beginPath();
   ctx.moveTo(0, points[0]);
   for (let i = 1; i < points.length; i++) {
     ctx.lineTo(i, points[i]);
   }
 
-  // Warna garis gradasi neon
   const gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
-  gradient.addColorStop(0, "#ff0066");
-gradient.addColorStop(1, "#ffcc00");
+  gradient.addColorStop(0, "#2cf216");   // warna akhir
+gradient.addColorStop(0.5, "#ff0066");   // warna awal
+gradient.addColorStop(1, "#ffcc00"); // warna tengah
+
+
   ctx.strokeStyle = gradient;
   ctx.lineWidth = 2;
   ctx.shadowColor = "#00ffff";
-  ctx.shadowBlur = 20;
+  ctx.shadowBlur = 15;
   ctx.stroke();
 
-  // Efek garis scanner
+  // Scanner effect
   const scannerWidth = 80;
   const scannerGradient = ctx.createLinearGradient(scanX - scannerWidth, 0, scanX + scannerWidth, 0);
   scannerGradient.addColorStop(0, "rgba(0,255,255,0)");
@@ -132,21 +137,28 @@ gradient.addColorStop(1, "#ffcc00");
   ctx.fillStyle = scannerGradient;
   ctx.fillRect(scanX - scannerWidth, 0, scannerWidth * 2, canvas.height);
 
-  // Update posisi scanner
-  scanX += 5;
+  scanX += 6;
   if (scanX > canvas.width + scannerWidth) scanX = -scannerWidth;
 
-  // Gerakan ECG
+  // ECG movement
   points.shift();
 
-  let newY = baseY + Math.sin(x / 15) * 4;
-  const rand = Math.random();
+  let newY = baseY + Math.sin(x / 10) * 3;
+  heartbeatTimer++;
 
-  if (rand > 0.985) {
-    newY = baseY - (Math.random() * 150 + 70); // lonjakan besar
-  } else if (rand < 0.02) {
-    newY = baseY + (Math.random() * 100); // jatuh
+  // Dua detakan cepat (double spike)
+  if (heartbeatTimer % 100 === 0) {
+    newY = baseY - (Math.random() * 150 + 80);
+  } else if (heartbeatTimer % 100 === 10) {
+    newY = baseY - (Math.random() * 120 + 60);
+  } else if (heartbeatTimer % 100 === 20) {
+    newY = baseY + (Math.random() * 90 + 40);
   }
+
+  // Tambahkan variasi acak ringan
+  const rand = Math.random();
+  if (rand > 0.995) newY -= Math.random() * 100;
+  if (rand < 0.005) newY += Math.random() * 100;
 
   points.push(newY);
   x += speed / 2;

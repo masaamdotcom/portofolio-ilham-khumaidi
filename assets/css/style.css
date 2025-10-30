@@ -97,41 +97,136 @@ nav a.active {
 .hero {
   position: relative;
   height: 100vh;
-  background: radial-gradient(circle at center, #001a1a 0%, #000 100%);
   overflow: hidden;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  color: white;
+  align-items: center;
+  color: #fff;
+  text-align: center;
 }
 
 #ecg-bg {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0;
+  z-index: 1;
 }
 
 .hero-overlay {
   position: relative;
   z-index: 2;
-  text-align: center;
-  background: rgba(0, 0, 0, 0.4);
-  border-radius: 50px;
-  backdrop-filter: blur(6px);
-  padding: 30px;
-}
-
-.hero-overlay h1 span {
-  color: var(--warna-orange);
-  font-size: 2.5rem;
 }
 
 .hero-overlay h1 {
-  font-size: 2.5rem;
-  color: white;
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
 }
+
+.hero-overlay span {
+  color: var(--warna-orange);
+}
+
+/* === Cards container === */
+.hero-cards {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 4rem;
+  padding: 0 1rem;
+}
+
+.hero-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  width: 230px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, background 0.3s ease;
+  cursor: pointer;
+}
+
+.hero-card:hover {
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.hero-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.hero-card p {
+  font-size: 0.95rem;
+  color: #eaeaea;
+}
+
+/* Tambahkan ini di bawah CSS hero-card tadi */
+
+/* ✨ Animasi muncul naik */
+@keyframes slideUpFade {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Terapkan animasi ke setiap card dengan delay berbeda */
+.hero-card {
+  opacity: 0;
+  animation: slideUpFade 0.8s ease forwards;
+}
+
+/* Delay animasi untuk muncul satu-satu */
+.hero-card:nth-child(1) {
+  animation-delay: 0.3s;
+}
+
+.hero-card:nth-child(2) {
+  animation-delay: 0.6s;
+}
+
+.hero-card:nth-child(3) {
+  animation-delay: 0.9s;
+}
+
+.hero-card:nth-child(4) {
+  animation-delay: 1.2s;
+}
+
+/* === Responsif HERO === */
+@media (max-width: 768px) {
+  .hero-overlay h1 {
+    font-size: 2rem;
+  }
+
+  .hero-cards {
+    gap: 1rem;
+  }
+
+  .hero-card {
+    width: 45%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-card {
+    width: 100%;
+  }
+}
+
 
 /* =========================================
    ABOUT SECTION
@@ -442,6 +537,7 @@ a {
     position: absolute;
     top: 100%;
     left: 0;
+    font-family: Arial, Helvetica, sans-serif;
   }
 
   .nav-links.active {
@@ -513,7 +609,7 @@ a {
   }
 
   .hero h1 span {
-    font-size: 0.9rem;
+    font-size: 1.4rem;
   }
 
   .about-text h2 {
@@ -545,7 +641,7 @@ a {
   }
 
   .hero h1 span {
-    font-size: 0.75rem;
+    font-size: 1.2rem;
   }
 
   .project-card {
