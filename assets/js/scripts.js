@@ -238,3 +238,37 @@ document.querySelectorAll('.bar').forEach(bar => {
 
   observer.observe(bar);
 });
+
+// Animasi muncul saat scroll
+const projectCards = document.querySelectorAll('.project-card');
+const projectObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+      projectObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+projectCards.forEach(card => projectObserver.observe(card));
+
+// Modal Project Details
+const modal = document.getElementById('projectModal');
+const modalTitle = document.getElementById('modalTitle');
+const modalDesc = document.getElementById('modalDesc');
+const modalImg = document.getElementById('modalImg');
+const modalLink = document.getElementById('modalLink');
+const closeBtn = document.querySelector('.close-btn');
+
+document.querySelectorAll('.project-card').forEach(card => {
+  card.addEventListener('click', () => {
+    modalTitle.textContent = card.querySelector('h3').textContent;
+    modalDesc.textContent = card.querySelector('p').textContent;
+    modalImg.src = card.querySelector('img').src;
+    modalLink.href = card.querySelector('a').href;
+    modal.style.display = 'flex';
+  });
+});
+
+closeBtn.addEventListener('click', () => modal.style.display = 'none');
+window.addEventListener('click', e => { if (e.target === modal) modal.style.display = 'none'; });
